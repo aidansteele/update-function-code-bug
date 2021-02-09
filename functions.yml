@@ -1,0 +1,32 @@
+Transform: AWS::Serverless-2016-10-31
+
+Resources:
+  ZipFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      AutoPublishAlias: first
+      Runtime: python3.8
+      Handler: index.handler
+      Timeout: 10
+      InlineCode: |
+        def handler(event, context):
+          return {"hello": "world"}
+
+  Repository:
+    Type: AWS::ECR::Repository
+
+  ImageFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      AutoPublishAlias: first
+      PackageType: Image
+      ImageUri: !Sub ${AWS::AccountId}.dkr.ecr.${AWS::Region}.amazonaws.com/${Repository}:first
+      Timeout: 10
+
+Outputs:
+  ZipFunction:
+    Value: !Ref ZipFunction
+  Repository:
+    Value: !Sub ${AWS::AccountId}.dkr.ecr.${AWS::Region}.amazonaws.com/${Repository}
+  ImageFunction:
+    Value: !Ref ImageFunction
