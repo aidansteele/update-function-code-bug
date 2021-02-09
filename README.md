@@ -26,6 +26,8 @@ function is version `4` and has a CodeSha256 beginning with `f2g` as expected.
 Now compare that to the next screenshot, which is for a container-based Lambda
 function.
 
+![image-based screenshot](imagedemo-screenshot.png)
+
 The box annotated "1" shows that before updating the function, the unversioned
 `$LATEST` has a CodeSha256 beginning `ed8`.
 
