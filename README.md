@@ -52,7 +52,7 @@ This feels like a bug, right? It was at least surprising to me: the behaviour
 of `UpdateFunctionCode` with `--publish` is different for ZIP functions and image
 functions. For the former, it creates and publishes a version from the provided
 ZIP file. For the latter, it creates a version from whatever was there previously
-- and doesn't create one for the provided image.
+and doesn't create one for the provided image.
 
 My understanding from working on this is that the `$LATEST` version of image-based
 functions is updated asynchronously. I guess this makes sense, given they can be
