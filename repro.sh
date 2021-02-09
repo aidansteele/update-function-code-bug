@@ -32,5 +32,5 @@ docker push ${IMAGE_REPO}:${EPOCH}
 
 aws lambda list-versions-by-function --function-name $IMAGE_FUNCTION
 aws lambda update-function-code --function-name $IMAGE_FUNCTION --image-uri ${IMAGE_REPO}:${EPOCH} --publish
-sleep 1
+sleep 10
 aws lambda list-versions-by-function --function-name $IMAGE_FUNCTION
